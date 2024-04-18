@@ -49,7 +49,7 @@ export const SimpleCounter = () => {
     /* setCounterClass("text-info"); */
     setIcon("fas fa-stopwatch");
     const newInterval = setInterval(() => {
-      setCounter((counter) => { return counter + 1 });
+      setCounter(prevCounter => prevCounter + 1);
     }, 10);
     setIntervalId(newInterval);
     setShowTheForce(false); 
@@ -71,6 +71,7 @@ export const SimpleCounter = () => {
     setTitle("Clock")
     setMessage("");
     setCounterClass("text-light fs-5")
+    setIcon("far fa-clock")
 
   };
  
@@ -91,8 +92,8 @@ export const SimpleCounter = () => {
         <div>{Math.floor(counter / 10000000 % 10)}</div>
         <div>{Math.floor(counter / 1000000 % 10)}</div>
         <div>{Math.floor(counter / 100000 % 10)}</div>
-        <div>{Math.floor(counter / 10000 % 10)}</div>
-        <div>{Math.floor(counter / 1000 % 10)}</div>
+        <div>{Math.floor((counter / 60000) % 10)}</div>
+        <div>{Math.floor(counter / 1000 % 6)}</div>
         <div>{Math.floor(counter / 100 % 10)}</div>
         <div>{','}</div>
         <div>{Math.floor(counter / 10 % 10)}</div>
