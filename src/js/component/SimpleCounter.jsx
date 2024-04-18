@@ -92,8 +92,8 @@ export const SimpleCounter = () => {
         <div>{Math.floor(counter / 10000000 % 10)}</div>
         <div>{Math.floor(counter / 1000000 % 10)}</div>
         <div>{Math.floor(counter / 100000 % 10)}</div>
-        <div>{Math.floor((counter / 60000) % 10)}</div>
-        <div>{Math.floor(counter / 1000 % 6)}</div>
+        <div>{Math.floor((counter / 10000) % 10)}</div>
+        <div>{Math.floor(counter / 1000 % 10)}</div>
         <div>{Math.floor(counter / 100 % 10)}</div>
         <div>{','}</div>
         <div>{Math.floor(counter / 10 % 10)}</div>
