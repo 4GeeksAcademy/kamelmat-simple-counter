@@ -1,12 +1,41 @@
 
-/* 
+.big-counter {
+    text-align: center;
+    background: black;
+}
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+.big-counter div {
+    display: inline-block;
+    font-size: 30px;
+    background: #161B22;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    margin: 3px;
+}
+body {
+    background-image: url("https://preview.redd.it/ur8ko9ow32h61.jpg?width=640&crop=smart&auto=webp&s=c6b7747d9aa2a0db8f67f50947ec805012f6f987");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: black;
+    background-attachment: fixed;
+}
 
-*/
+.container {
+    width: 80%; 
+    max-width: 800px;
+    margin: 350px auto;
+    padding: 20px; 
+}
+.the-force {
+    position: absolute;
+    top: 20px; 
+    left: 50%; 
+    transform: translateX(-50%);
+    height: auto; 
+    z-index: 1; 
+}
+.text-light {
+    color: #f8f9fa!important;
+}
