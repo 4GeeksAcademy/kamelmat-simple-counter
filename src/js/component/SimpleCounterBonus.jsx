@@ -95,7 +95,7 @@ export const SimpleCounterBonus = () => {
                     </button>
                 </div>
             </div>
-            <div className="container bg-dark">
+            <div className="containerTimer">
                 <div className="input-group my-3 p-3">
                     <span className="input-group-text bg-warning">Set Timer</span>
                     <input type="text" onChange={(event) => handleTimer(event)} aria-label="First name" className="form-control" placeholder="Set the timer in tenths of a second"/>

@@ -53,11 +53,14 @@ export const SimpleCounter = () => {
         }
 
       }, 10);
-    } else {
+    }
+
+    else {
       clearInterval(intervalId);
     }
     return () => clearInterval(intervalId);
   }, [isRunning, milliseconds, seconds, minutes, hours]);
+
 
   const formatTime = value => {
     return value < 10 ? `0${value}` : value.toString();

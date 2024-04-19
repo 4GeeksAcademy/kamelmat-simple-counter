@@ -25,12 +25,13 @@ body {
 .container {
     width: 80%; 
     max-width: 800px;
-    margin: 350px auto;
-    padding: 20px; 
+    margin-top: 300px;
+    margin-bottom: 5px;
+    padding: 5px; 
 }
 .Obiwan {
     position: absolute;
-    top: 150px; 
+    top: 100px; 
     left: 50%;
     width: 400px; 
     height: auto; 
