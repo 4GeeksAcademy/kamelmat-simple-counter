@@ -30,7 +30,6 @@ export const SimpleCounter = () => {
                 setMinutes(prevMinutes => (prevMinutes + 1) % 60);
               }
             }
-          
               if (milliseconds >= 1) {
                 setTimeToTarget(true);
                 setMessage("Time To Target");
@@ -55,10 +54,8 @@ export const SimpleCounter = () => {
     } else {
       clearInterval(intervalId); 
     }
-
     return () => clearInterval(intervalId); 
   }, [isRunning, milliseconds, seconds, minutes, hours]);
-
 
   const formatTime = value => {
     return value < 10 ? `0${value}` : value.toString(); // Formatea el tiempo para que tenga dos dígitos
@@ -69,7 +66,6 @@ export const SimpleCounter = () => {
     setTextStart('Stop');
    setTitle("Chronometer")
    setMessage("Time To Target");
-    /* setCounterClass("text-info"); */
     setIcon("fas fa-stopwatch");
     setReachedThirtySeconds(false); 
     const newInterval = setInterval(() => {
@@ -103,7 +99,6 @@ export const SimpleCounter = () => {
     setHours(0);
 
   };
- 
 
   return (
     <div className="container">
@@ -129,7 +124,6 @@ export const SimpleCounter = () => {
           <button onClick={handleReset} type="button" className="btn btn-outline-danger">
             Reset
           </button>
-    
         </div>
       </div>
     </div>
