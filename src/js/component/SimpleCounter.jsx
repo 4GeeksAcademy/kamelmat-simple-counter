@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
 export const SimpleCounter = () => {
   const [counter, setCounter] = useState(0);
   const [isRunning, setIsRunning] = useState(false)
@@ -61,7 +60,7 @@ export const SimpleCounter = () => {
   }, [isRunning, milliseconds, seconds, minutes, hours]);
 
   const formatTime = value => {
-    return value < 10 ? `0${value}` : value.toString(); // Formatea el tiempo para que tenga dos dígitos
+    return value < 10 ? `0${value}` : value.toString();
   };
   const handleStart = () => {
     if (!isRunning) {
@@ -108,7 +107,7 @@ export const SimpleCounter = () => {
       {showTheForce && (
         <div className="the-force">
           <h1 className="text-info">USE THE FORCE LUKE!</h1>
-          <img src="https://www.independent.com/wp-content/uploads/2022/06/Obi-Wan.jpeg?w=1200" alt="The Force" />
+          <img className="Obiwan" src="https://www.independent.com/wp-content/uploads/2022/06/Obi-Wan.jpeg?w=1200" alt="The Force" />
         </div>
       )}
       <h1 className={`${counterClass}`}>{message ? message : "Target"}</h1>
@@ -122,7 +121,7 @@ export const SimpleCounter = () => {
         <div className="btn-group-vertical" role="group" aria-label="Vertical button group">
 
           <button onClick={handleStart} type="button" className="btn btn-outline-success">
-            {isRunning ? 'Pause' : counter === 0 ? 'Start' : 'Continue' }
+            {isRunning ? 'Pause' : counter === 0 ? 'Start' : 'Continue'}
           </button>
           <button onClick={handleReset} type="button" className="btn btn-outline-danger">
             Reset

@@ -12,7 +12,7 @@ const Home = () => {
         <div className="SimpleCounter text-center d-flex p-5">
         
          <SimpleCounter /> 
-         {/*   <SimpleCounterBonus /> */}
+        {/*    <SimpleCounterBonus /> */}
 
     
         </div>
