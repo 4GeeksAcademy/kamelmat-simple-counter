@@ -124,7 +124,7 @@ export const SimpleCounter = () => {
         <div className="btn-group-vertical" role="group" aria-label="Vertical button group">
 
           <button onClick={handleStart} type="button" className="btn btn-outline-success">
-            {textStart}
+            {isRunning? 'Pause': 'Start'}
           </button>
           <button onClick={handleReset} type="button" className="btn btn-outline-danger">
             Reset
