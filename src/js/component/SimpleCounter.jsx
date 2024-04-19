@@ -12,34 +12,57 @@ export const SimpleCounter = () => {
   const [timeToTarget, setTimeToTarget] = useState(false);
   const [message, setMessage] = useState("");
   const [counterClass, setCounterClass] = useState("");
+  const [milliseconds, setMilliseconds] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [hours, setHours] = useState(0);
+  const [reachedThirtySeconds, setReachedThirtySeconds] = useState(false);
 
     useEffect(() => {
         console.log("Counter class changed:", counterClass);
-        if (counter >= 1) {
-            setTimeToTarget(true);
-            setMessage("Time To Target");
-            
-            setCounterClass("text-light fs-4");
-          }
-        if (counter >= 1000) {
-          setTimeToTarget(true);
-          setMessage("2000 mts. To Target!!");
+        let intervalId;
+        if (isRunning) {
+          intervalId = setInterval(() => {
+            setMilliseconds(prevMilliseconds => (prevMilliseconds + 1) % 100); 
+        if (milliseconds === 99) {
+              setSeconds(prevSeconds => (prevSeconds + 1) % 60); 
+              if (seconds === 59) {
+                setMinutes(prevMinutes => (prevMinutes + 1) % 60);
+              }
+            }
           
-          setCounterClass("text-info fs-3");
-        }
-        if (counter >= 2000) {
-          setMessage("1000 mts TO TARGET!!!!!!");
-        
-          setCounterClass("text-warning fs-2");
-        }
-        if (counter >= 3000) {
-          setMessage("🤦🏻‍♂️ you missed it Luke! you SUCK!!!!");
-        
-          setCounterClass("text-danger fs-1");
-        }
-      }, [counter]);
+              if (milliseconds >= 1) {
+                setTimeToTarget(true);
+                setMessage("Time To Target");
+                setCounterClass("text-light fs-4");
+              }
+              if (seconds >= 10) {
+                setTimeToTarget(true);
+                setMessage("2000 mts. To Target!!");
+                setCounterClass("text-info fs-3");
+              }
+              if (seconds >= 20) {
+                setMessage("1000 mts TO TARGET!!!!!!");
+                setCounterClass("text-warning fs-2");
+              }
+              if (seconds >= 30) {
+                setMessage("🤦🏻‍♂️ you missed it Luke! you SUCK!!!!");
+                  setCounterClass("text-danger fs-1");
+                  setReachedThirtySeconds(true);
+              }
+            
+      }, 10); 
+    } else {
+      clearInterval(intervalId); 
+    }
 
- 
+    return () => clearInterval(intervalId); 
+  }, [isRunning, milliseconds, seconds, minutes, hours]);
+
+
+  const formatTime = value => {
+    return value < 10 ? `0${value}` : value.toString(); // Formatea el tiempo para que tenga dos dígitos
+  };
   const handleStart = () => {
     if (!isRunning) {
     setIsRunning(true);
@@ -48,6 +71,7 @@ export const SimpleCounter = () => {
    setMessage("Time To Target");
     /* setCounterClass("text-info"); */
     setIcon("fas fa-stopwatch");
+    setReachedThirtySeconds(false); 
     const newInterval = setInterval(() => {
       setCounter(prevCounter => prevCounter + 1);
     }, 10);
@@ -72,6 +96,11 @@ export const SimpleCounter = () => {
     setMessage("");
     setCounterClass("text-light fs-5")
     setIcon("far fa-clock")
+    clearInterval(intervalId);
+    setMilliseconds(0);
+    setSeconds(0);
+    setMinutes(0);
+    setHours(0);
 
   };
  
@@ -88,16 +117,10 @@ export const SimpleCounter = () => {
       <h2 className={"text-primary"}>{title}</h2>
       <div className="big-counter">
         <div><i className={icon}></i></div>
-        <div>{Math.floor(counter / 100000000 % 10)}</div>
-        <div>{Math.floor(counter / 10000000 % 10)}</div>
-        <div>{Math.floor(counter / 1000000 % 10)}</div>
-        <div>{Math.floor(counter / 100000 % 10)}</div>
-        <div>{Math.floor((counter / 10000) % 10)}</div>
-        <div>{Math.floor(counter / 1000 % 10)}</div>
-        <div>{Math.floor(counter / 100 % 10)}</div>
-        <div>{','}</div>
-        <div>{Math.floor(counter / 10 % 10)}</div>
-        <div>{Math.floor(counter % 10)}</div>
+        <div>{formatTime(hours)}</div>
+        <div>{formatTime(minutes)}</div>
+        <div>{formatTime(seconds)}</div>
+        <div>{formatTime(milliseconds)}</div>
         <div className="btn-group-vertical" role="group" aria-label="Vertical button group">
 
           <button onClick={handleStart} type="button" className="btn btn-outline-success">
